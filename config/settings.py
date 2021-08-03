@@ -127,6 +127,7 @@ AWS_S3_REGION_NAME = 'ap-northeast-1'
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_QUERYSTRING_AUTH = False  # クエリに認証を含めるか
 
 # Static files (CSS, JavaScript, Images)/
 
