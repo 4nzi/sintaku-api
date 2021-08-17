@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import PostViewSet, ImageViewSet, ProfileViewSet, CommentViewSet, CreateUserView, MyProfileListView, MyPostListView
+from .views import PostViewSet, ImageViewSet, ProfileViewSet, CommentViewSet, CreateUserView, MyProfileListView, MyPostListView, MyLikeListView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
@@ -13,5 +13,6 @@ urlpatterns = [
     path('', include('djoser.urls.jwt')),
     path('register/', CreateUserView.as_view(), name='register'),
     path('myprofile/', MyProfileListView.as_view(), name='myprofile'),
-    path("myposts/", MyPostListView.as_view(), name="myposts")
+    path("myposts/", MyPostListView.as_view(), name="myposts"),
+    path("mylikes/", MyLikeListView.as_view(), name="mylikes")
 ]

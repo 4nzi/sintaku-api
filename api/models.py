@@ -73,10 +73,10 @@ class Post(models.Model):
                           primary_key=True, editable=False)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
-    thum = models.ImageField(upload_to=upload_thum_path)
+    thum = models.ImageField(blank=True, null=True, upload_to=upload_thum_path)
     created_at = models.DateTimeField(auto_now_add=True)
     liked = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name='liked', blank=True)
+        settings.AUTH_USER_MODEL, related_name='liked', blank=True, )
     userPost = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name='userPost',
         on_delete=models.CASCADE
