@@ -24,7 +24,6 @@ class MyProfileListView(generics.ListAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
-    # クエリのフィルター
     def get_queryset(self):
         return self.queryset.filter(userProfile=self.request.user)
 
@@ -49,9 +48,17 @@ class MyPostListView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-    # クエリのフィルター
     def get_queryset(self):
         return self.queryset.filter(userPost=self.request.user)
+
+
+class MyLikeListView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        self.queryset.filter(liked=self.request.user)
+        return self.queryset.filter(liked=self.request.user)
 
 
 class ImageViewSet(viewsets.ModelViewSet):
