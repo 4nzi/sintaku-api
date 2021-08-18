@@ -47,6 +47,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class MyPostListView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return self.queryset.filter(userPost=self.request.user)
@@ -55,6 +56,7 @@ class MyPostListView(generics.ListAPIView):
 class MyLikeListView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         self.queryset.filter(liked=self.request.user)
